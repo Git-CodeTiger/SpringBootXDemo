@@ -1,0 +1,39 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/milestone" }
+	}
+
+	dependencies {
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.BUILD-SNAPSHOT'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'SpringBootAopDemo'
+	version = '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/snapshot" }
+	maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-devtools'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-aop'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'com.zaxxer:HikariCP:2.3.+'
+	compile 'mysql:mysql-connector-java:5.1.38'
+	compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1'
+	compile 'javax:javaee-web-api:7.0'
+	compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+}

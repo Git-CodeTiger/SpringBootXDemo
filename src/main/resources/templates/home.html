@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"><!-- 1 -->
+
+	<head>
+		<meta charset="utf8" />
+		<title sec:authentication="name"></title> <!-- 2 -->
+	</head>
+
+	<body>
+		<li><a th:href="@{/}">首页</a></li>
+
+		<div class="container">
+			<div> 
+				<h1 th:text="${msg.title}"></h1>
+				<p th:text="${msg.content}"></p>
+				<div sec:authorize="hasRole('ROLE_ADMIN')">
+					<p th:text="${msg.etraInfo}"></p>
+				</div>
+
+				<div sec:authorize="hasRole('ROLE_USER')">
+					<p>无更多信息显示</p>
+				</div>
+
+
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="注销" />
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
